@@ -4,11 +4,6 @@
 // document.querySelector('message');
 // console.log(document.querySelector('.message').textContent);
 
-// // document.querySelector('.message').textContent = 'Correct number';
-// document.querySelector('.message').textContent = 13;
-// document.querySelector('.score').textContent = 10;
-// console.log((document.querySelector('.guess').value = 23));
-
 // Create a variable with a secret number between 1-20;
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 console.log(secretNumber);
@@ -45,23 +40,11 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-  } else if (guess >= secretNumber) {
-    // Subtract from the score for wrong answer and reset on the DOM when score
-    // is above 0
+    // When the guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too high!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
       document.querySelector('.message').textContent =
-        'You lost! Please try again';
-      document.querySelector('.score').textContent = 0;
-    }
-  } else if (guess <= secretNumber) {
-    // Subtract from the score for wrong answer and reset on the DOM when the score
-    // is above zero
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low!';
+        guess > secretNumber ? 'Too High!' : 'Too low';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
